@@ -11,16 +11,22 @@ EPSILON = 4.0
 ETA = 0.1
 TIME = 1000
 
+# シグモイド関数
 def sigmoid(x):
     return 1/(1+np.exp(-1*EPSILON*x))
 
 
+# トレーニングデータ
+## 入力
 inputs = [[0,0],
          [0,1],
          [1,0],
          [1,1]]
+## 教師信号
 teach = [0,1,1,0]
 
+
+# 初期重みをランダムに与える
 wab = (np.random.rand()-0.5)*2 * 0.3 # -0.3から0.3の一様乱数
 wac = (np.random.rand()-0.5)*2 * 0.3
 wbd = (np.random.rand()-0.5)*2 * 0.3
@@ -33,9 +39,11 @@ offc = (np.random.rand()-0.5)*2 * 0.3
 
 x = []
 y = []
+# 学習
 for t in range(TIME):
 
     errorAll = 0.0
+    # 各パターンを提示
     for p in range(len(inputs)):
 
         ##########
