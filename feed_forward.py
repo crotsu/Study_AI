@@ -21,20 +21,8 @@ inputs = [[0,0],
 ## 教師信号
 teach = [0,1,1,0]
 
-# 初期重みをランダムに与える
-wab = (np.random.rand()-0.5)*2 * 0.3 # -0.3から0.3の一様乱数
-wac = (np.random.rand()-0.5)*2 * 0.3 
-wbd = (np.random.rand()-0.5)*2 * 0.3 
-wbe = (np.random.rand()-0.5)*2 * 0.3 
-wcd = (np.random.rand()-0.5)*2 * 0.3 
-wce = (np.random.rand()-0.5)*2 * 0.3 
-offa = (np.random.rand()-0.5)*2 * 0.3
-offb = (np.random.rand()-0.5)*2 * 0.3
-offc = (np.random.rand()-0.5)*2 * 0.3
-
 
 # 初期重み（練習用）
-'''
 wab =  0.8
 wac = -0.7
 wbd =  0.1
@@ -44,6 +32,18 @@ wce =  0.4
 offa = 0.4
 offb =-0.5
 offc = 0.6 
+
+# 初期重みをランダムに与える
+'''
+wab = (np.random.rand()-0.5)*2 * 0.3 # -0.3から0.3の一様乱数
+wac = (np.random.rand()-0.5)*2 * 0.3 
+wbd = (np.random.rand()-0.5)*2 * 0.3 
+wbe = (np.random.rand()-0.5)*2 * 0.3 
+wcd = (np.random.rand()-0.5)*2 * 0.3 
+wce = (np.random.rand()-0.5)*2 * 0.3 
+offa = (np.random.rand()-0.5)*2 * 0.3
+offb = (np.random.rand()-0.5)*2 * 0.3
+offc = (np.random.rand()-0.5)*2 * 0.3
 '''
 
 # 初期重み（XORを学習済み）
@@ -59,11 +59,13 @@ offb =  1.956707
 offc =  0.710779
 '''
 
-
 # 全パターン（XORは4つ）でループ
 for p in range(len(inputs)):
+    print("pattern=", p)
 
+    ##########
     # 前向き計算
+    ##########
     
     # 入力層
     outd = inputs[p][0]
@@ -72,15 +74,18 @@ for p in range(len(inputs)):
     # 中間層
     xb = wbd * outd + wbe * oute + offb
     outb = sigmoid(xb)
+    print("outb=", round(outb,2))
     
     xc = wcd * outd + wce * oute + offc
     outc = sigmoid(xc)
+    print("outc=", round(outc,2))
 
     # 出力層
     xa = wab * outb + wac * outc + offa
     outa = sigmoid(xa)
+    print("outa=", round(outa))
 
     # 誤差計算
     error = (outa-teach[p])**2
     print(teach[p], outa, error)
-    
+    print()
