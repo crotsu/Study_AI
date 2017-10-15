@@ -6,15 +6,23 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # データ読み込み
-dfA = pd.read_csv('fishA.train', sep=' ', header=None)
-dfB = pd.read_csv('fishB.train', sep=' ', header=None)
+dfAtrain = pd.read_csv('fishA.train', sep=' ', header=None)
+dfBtrain = pd.read_csv('fishB.train', sep=' ', header=None)
+dfAtest = pd.read_csv('fishA.test', sep=' ', header=None)
+dfBtest = pd.read_csv('fishB.test', sep=' ', header=None)
 
 # 散布図をプロットする
-for i in range(len(dfA)):
-    plt.scatter(dfA[0][i],dfA[1][i], color='r',marker='o', s=30)
-for i in range(len(dfB)):
-    plt.scatter(dfB[0][i],dfB[1][i], color='b',marker='x', s=30)
+for i in range(len(dfAtrain)):
+    plt.scatter(dfAtrain[0][i],dfAtrain[1][i], color='r',marker='o', s=30)
+for i in range(len(dfBtrain)):
+    plt.scatter(dfBtrain[0][i],dfBtrain[1][i], color='b',marker='x', s=30)
 
+for i in range(len(dfAtest)):
+    plt.scatter(dfAtest[0][i],dfAtest[1][i], color='g',marker='o', s=30)
+for i in range(len(dfBtest)):
+    plt.scatter(dfBtest[0][i],dfBtest[1][i], color='y',marker='x', s=30)
+
+    
 # グリッド表示
 plt.grid(True)
 
