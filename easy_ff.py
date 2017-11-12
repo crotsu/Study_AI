@@ -48,3 +48,13 @@ xb = wbd * outd + wbe * oute + offb
 print(xb)
 outb = sigmoid(xb)
 print(outb)
+
+xc = wcd * outd + wce * oute + offc
+print(xc)
+outc = sigmoid(xc)
+print(outc)
+
+xa = wab * outb + wac * outc + offa
+print(xa)
+outa = sigmoid(xa)
+print(outa)
