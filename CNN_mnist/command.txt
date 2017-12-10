@@ -1,0 +1,9 @@
+python eval_myimage_cnn.py -i tegaki/tegaki1.png -m result_CNN/MLP.model
+
+python train_mnist_cnn.py
+python eval_myimage_cnn.py -i tegaki/tegaki1.png -m result/MLP.model
+dot -Tpng result/cg.dot -o result/cg.png
+display result/cg.png
+display result/accuracy.png
+display result/loss.png
+
