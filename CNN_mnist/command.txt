@@ -1,5 +1,9 @@
+# 学習済みのCNNで，手書き数字の認識実験を行う．
+# なんらかのツールで手書き数字を書いて，それをtegaki/tegaki1.pngとして保存する．
+# ファイル名は何でも良い．
 python eval_myimage_cnn.py -i tegaki/tegaki1.png -m result_CNN/MLP.model
 
+# 学習を行って，手書き数字の認識実験を行う．
 python train_mnist_cnn.py
 python eval_myimage_cnn.py -i tegaki/tegaki1.png -m result/MLP.model
 dot -Tpng result/cg.dot -o result/cg.png
